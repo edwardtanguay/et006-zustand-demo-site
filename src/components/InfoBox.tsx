@@ -1,14 +1,13 @@
-interface IProps {
-	message: string;
-}
+import { useStore } from '../store';
 
-export const InfoBox = ({message}: IProps) => {
+export const InfoBox = () => {
+	const store = useStore((state) => state);
 	return (
 		<div className="infoBox">
 			<h2>Another component:</h2>
 			<div className="row">
 				<label>Message:</label>
-				<span className="theValue"> {message}</span>
+				<span className="theValue"> {store.message}</span>
 			</div>
 		</div>
 	);

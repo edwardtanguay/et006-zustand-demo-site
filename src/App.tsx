@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useStore } from './store';
 import './App.scss';
 import { InfoBox } from './components/InfoBox';
 
 function App() {
-	const [message, setMessage] = useState('test');
-
+	const store = useStore((state) => state);
 	return (
 		<div className="App">
 			<h2>Zustand Demo</h2>
@@ -15,15 +14,15 @@ function App() {
 						<label>Message:</label>
 						<input
 							type="text"
-							value={message}
-							onChange={(e) => setMessage(e.target.value)}
+							value={store.message}
+							onChange={(e) => store.setMessage(e.target.value)}
 						/>
-						Message: {message}
+						Message: {store.message}
 					</div>
 				</section>
 
         <section className="dataArea">
-          <InfoBox message={message} />
+          <InfoBox/>
         </section>
 			</main>
 		</div>
