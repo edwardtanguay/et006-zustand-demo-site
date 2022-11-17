@@ -10,6 +10,7 @@ function App() {
 
 			<main>
 				<section className="controlArea">
+					{/* MESSAGE */}
 					<div className="data">
 						<label>Message:</label>
 						<input
@@ -19,11 +20,36 @@ function App() {
 						/>
 						Message: {store.message}
 					</div>
+
+					{/* COLORS */}
+					<div className="data">
+						<label>Colors:</label>
+						<div>
+							<button onClick={() => store.addColor('blue')}>
+								blue
+							</button>
+							<button onClick={() => store.addColor('red')}>
+								red
+							</button>
+							<button onClick={() => store.addColor('yellow')}>
+								yellow
+							</button>
+							<button onClick={() => store.addColor('purple')}>
+								purple
+							</button>
+						</div>
+						<button onClick={() => store.deleteColor()}>
+							delete color
+						</button>
+						<button onClick={() => store.setColors([])}>
+							delete all colors
+						</button>
+					</div>
 				</section>
 
-        <section className="dataArea">
-          <InfoBox/>
-        </section>
+				<section className="dataArea">
+					<InfoBox />
+				</section>
 			</main>
 		</div>
 	);
