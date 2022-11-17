@@ -23,7 +23,7 @@ function App() {
 				</section>
 
         <section className="dataArea">
-          <InfoBox/>
+          <InfoBox message={message} />
         </section>
 			</main>
 		</div>
