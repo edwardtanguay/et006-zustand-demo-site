@@ -1,5 +1,6 @@
 import { useStore } from '../store';
 import { FaSpinner } from 'react-icons/fa';
+import React from 'react';
 
 export const InfoBox = () => {
 	const store = useStore((state) => state);
@@ -46,13 +47,13 @@ export const InfoBox = () => {
 				<ul>
 					{store.techBooks.map((techBook, i) => {
 						return (
-							<>
+							<React.Fragment key={i}>
 								{techBook.title
 									.toLowerCase()
 									.includes(
 										store.techBookSearch.toLowerCase()
 									) && <li key={i}>{techBook.title}</li>}
-							</>
+							</React.Fragment>
 						);
 					})}
 				</ul>
