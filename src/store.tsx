@@ -8,6 +8,12 @@ interface IStore {
 	addColor: (color: string) => void;
 	deleteColor: () => void;
 	deleteVowelsAndColorRed: () => void;
+	currentUserStatus: {
+		isOnline: boolean;
+		emailIsConfirmed: boolean;
+	};
+	toggleCurrentUserStatusOnline: () => void;
+	toggleCurrentUserStatusEmail: () => void;
 }
 
 export const useStore = create<IStore>(
@@ -25,6 +31,26 @@ export const useStore = create<IStore>(
 				const _state = { ...state };
 				_state.message = _state.message.replace(/[aeiou]/gi, '');
 				_state.colors = _state.colors.filter((m) => m !== 'red');
+				_state.currentUserStatus.emailIsConfirmed = false;
+				_state.currentUserStatus.isOnline = false;
+				return _state;
+			}),
+		currentUserStatus: {
+			isOnline: false,
+			emailIsConfirmed: true,
+		},
+		toggleCurrentUserStatusOnline: () =>
+			set((state) => {
+				const _state = { ...state };
+				_state.currentUserStatus.isOnline =
+					!_state.currentUserStatus.isOnline;
+				return _state;
+			}),
+		toggleCurrentUserStatusEmail: () =>
+			set((state) => {
+				const _state = { ...state };
+				_state.currentUserStatus.emailIsConfirmed =
+					!_state.currentUserStatus.emailIsConfirmed;
 				return _state;
 			}),
 	})
