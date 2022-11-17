@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import { InfoBox } from './components/InfoBox';
 
 function App() {
 	const [message, setMessage] = useState('test');
@@ -20,6 +21,10 @@ function App() {
 						Message: {message}
 					</div>
 				</section>
+
+        <section className="dataArea">
+          <InfoBox/>
+        </section>
 			</main>
 		</div>
 	);
